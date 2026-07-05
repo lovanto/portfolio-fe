@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply font-sans antialiased;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/80 dark:bg-gray-950/80 backdrop-blur-xl;
+  }
+
+  .glass-card {
+    @apply bg-white dark:bg-gray-900 border border-gray-200/60 dark:border-gray-800/60;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-blue-600 via-blue-500 to-orange-500 bg-clip-text text-transparent;
+  }
+
+  .gradient-bg {
+    @apply bg-gradient-to-br from-blue-600 via-blue-500 to-orange-500;
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28 lg:py-32;
+  }
+
+  .sidebar-link {
+    @apply flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200;
+  }
+
+  .sidebar-link-inactive {
+    @apply text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800/50;
+  }
+
+  .sidebar-link-active {
+    @apply text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/40;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-blue-400/40 dark:bg-blue-600/40 rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-blue-500/60 dark:bg-blue-500/60;
+}
+
+::selection {
+  @apply bg-blue-500/30 text-blue-900 dark:text-blue-100;
+}
+
+/* View Transition — circular theme reveal */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
+/* Dot grid background */
+.dot-grid {
+  background-image: radial-gradient(circle, theme('colors.gray.300') 1px, transparent 1px);
+  background-size: 24px 24px;
+  animation: dot-pan 60s linear infinite;
+}
+
+.dark .dot-grid {
+  background-image: radial-gradient(circle, theme('colors.gray.700') 1px, transparent 1px);
+}
+
+@keyframes dot-pan {
+  0% { background-position: 0 0; }
+  100% { background-position: 480px 480px; }
+}
+
+/* Floating gradient blobs */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  will-change: transform;
+}
+
+.blob-1 {
+  width: 500px;
+  height: 500px;
+  top: -10%;
+  right: -5%;
+  background: theme('colors.blue.400' / 0.15);
+  animation: blob-drift-1 15s ease-in-out infinite;
+}
+
+.blob-2 {
+  width: 400px;
+  height: 400px;
+  bottom: 10%;
+  left: -5%;
+  background: theme('colors.orange.400' / 0.12);
+  animation: blob-drift-2 18s ease-in-out infinite;
+}
+
+.blob-3 {
+  width: 350px;
+  height: 350px;
+  top: 50%;
+  right: 20%;
+  background: theme('colors.blue.500' / 0.1);
+  animation: blob-drift-3 20s ease-in-out infinite;
+}
+
+.dark .blob-1 {
+  background: theme('colors.blue.600' / 0.08);
+}
+
+.dark .blob-2 {
+  background: theme('colors.orange.600' / 0.06);
+}
+
+.dark .blob-3 {
+  background: theme('colors.blue.700' / 0.05);
+}
+
+@keyframes blob-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  25% { transform: translate(60px, 80px) scale(1.15) rotate(5deg); }
+  50% { transform: translate(-40px, 120px) scale(0.9) rotate(-3deg); }
+  75% { transform: translate(-80px, 40px) scale(1.1) rotate(4deg); }
+}
+
+@keyframes blob-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  25% { transform: translate(-70px, -60px) scale(1.2) rotate(-4deg); }
+  50% { transform: translate(50px, -100px) scale(0.85) rotate(6deg); }
+  75% { transform: translate(80px, -30px) scale(1.05) rotate(-2deg); }
+}
+
+@keyframes blob-drift-3 {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  25% { transform: translate(-80px, 60px) scale(0.9) rotate(3deg); }
+  50% { transform: translate(60px, -50px) scale(1.15) rotate(-5deg); }
+  75% { transform: translate(40px, 80px) scale(0.95) rotate(2deg); }
+}
