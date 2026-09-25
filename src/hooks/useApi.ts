@@ -1,8 +1,7 @@
-import { useState, useEffect, useRef, DependencyList } from 'react';
-import { apiGet } from '../lib/api';
+import { projects } from '../data/projects';
 import type {
   HeroData, Highlight, TimelineEntry, SkillsData,
-  Project, ContactInfo, Social, NavLink,
+  ContactInfo, Social, NavLink,
 } from '../types';
 
 interface UseApiResult<T> {
@@ -11,39 +10,8 @@ interface UseApiResult<T> {
   error: string | null;
 }
 
-function useApi<T>(
-  fetcher: () => Promise<T>,
-  fallback: T,
-  deps: DependencyList = [],
-): UseApiResult<T> {
-  const [data, setData] = useState<T>(fallback);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const fetcherRef = useRef(fetcher);
-  fetcherRef.current = fetcher;
-
-  useEffect(() => {
-    let cancelled = false;
-    setLoading(true);
-    fetcherRef.current()
-      .then((result) => {
-        if (cancelled) return;
-        if (result && typeof result === 'object' && !Array.isArray(result)) {
-          const merged: Record<string, unknown> = { ...(fallback as Record<string, unknown>) };
-          for (const [key, val] of Object.entries(result as Record<string, unknown>)) {
-            if (val != null) merged[key] = val;
-          }
-          setData(merged as T);
-        } else {
-          setData(result ?? fallback);
-        }
-      })
-      .catch((err) => { if (!cancelled) setError(err.message); })
-      .finally(() => { if (!cancelled) setLoading(false); });
-    return () => { cancelled = true; };
-  }, deps);
-
-  return { data, loading, error };
+function useApi<T>(data: T): UseApiResult<T> {
+  return { data, loading: false, error: null };
 }
 
 const fallbackHero: HeroData = {
@@ -55,7 +23,7 @@ const fallbackHero: HeroData = {
 };
 
 export function useHero() {
-  return useApi(() => apiGet<HeroData>('/api/hero'), fallbackHero, []);
+  return useApi(fallbackHero);
 }
 
 const fallbackHighlights: Highlight[] = [
@@ -66,7 +34,7 @@ const fallbackHighlights: Highlight[] = [
 ];
 
 export function useHighlights() {
-  return useApi(() => apiGet<Highlight[]>('/api/about/highlights'), fallbackHighlights, []);
+  return useApi(fallbackHighlights);
 }
 
 const fallbackTimeline: TimelineEntry[] = [
@@ -120,7 +88,7 @@ const fallbackTimeline: TimelineEntry[] = [
 ];
 
 export function useTimeline() {
-  return useApi(() => apiGet<TimelineEntry[]>('/api/about/timeline'), fallbackTimeline, []);
+  return useApi(fallbackTimeline);
 }
 
 const fallbackSkills: SkillsData = {
@@ -136,19 +104,15 @@ const fallbackSkills: SkillsData = {
 };
 
 export function useSkills() {
-  return useApi(() => apiGet<SkillsData>('/api/skills'), fallbackSkills, []);
+  return useApi(fallbackSkills);
 }
 
 export function useProjects() {
-  return useApi(() => apiGet<Project[]>('/api/projects'), [] as Project[], []);
+  return useApi(projects);
 }
 
 export function useProjectBySlug(slug: string) {
-  return useApi(
-    () => apiGet<Project>(`/api/projects/${encodeURIComponent(slug)}`),
-    null as Project | null,
-    [slug],
-  );
+  return useApi(projects.find((project) => project.slug === slug) ?? null);
 }
 
 interface ContactData {
@@ -170,7 +134,7 @@ const fallbackContact: ContactData = {
 };
 
 export function useContactInfo() {
-  return useApi(() => apiGet<ContactData>('/api/contact'), fallbackContact, []);
+  return useApi(fallbackContact);
 }
 
 interface NavData {
@@ -195,5 +159,5 @@ const fallbackNav: NavData = {
 };
 
 export function useNav() {
-  return useApi(() => apiGet<NavData>('/api/nav'), fallbackNav, []);
+  return useApi(fallbackNav);
 }

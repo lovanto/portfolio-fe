@@ -33,7 +33,7 @@ export default function Projects() {
       const matchesSearch =
         searchQuery === '' ||
         project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        project.shortDescription.toLowerCase().includes(searchQuery.toLowerCase()) ||
         project.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()));
 
       const matchesTags =
@@ -102,7 +102,7 @@ export default function Projects() {
                         {project.title}
                       </h3>
                       <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-5">
-                        {project.description}
+                        {project.shortDescription}
                       </p>
                       <div className="flex flex-wrap gap-2 mb-4">
                         {project.tags.map((tag) => (
@@ -152,7 +152,7 @@ export default function Projects() {
                       {project.title}
                     </h4>
                     <p className="text-gray-500 dark:text-gray-400 text-xs leading-relaxed mb-4 line-clamp-3 flex-1">
-                      {project.description}
+                      {project.shortDescription}
                     </p>
                     <div className="flex flex-wrap gap-1.5 mb-3">
                       {project.tags.slice(0, 3).map((tag) => (
@@ -294,7 +294,7 @@ export default function Projects() {
                               {project.title}
                             </h4>
                             <p className="text-gray-500 dark:text-gray-400 text-xs leading-relaxed mb-3 line-clamp-2">
-                              {project.description}
+                              {project.shortDescription}
                             </p>
                             <div className="flex flex-wrap gap-1.5">
                               {project.tags.slice(0, 4).map((tag) => (

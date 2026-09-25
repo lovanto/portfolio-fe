@@ -3,7 +3,6 @@ import { Send, CheckCircle, AlertCircle } from 'lucide-react';
 import Reveal from './Reveal';
 import { iconMap } from '../lib/icons';
 import { useContactInfo } from '../hooks/useApi';
-import { apiPost } from '../lib/api';
 
 export default function Contact() {
   const { data } = useContactInfo();
@@ -51,22 +50,14 @@ export default function Contact() {
     }
 
     setIsSubmitting(true);
-
-    try {
-      await apiPost('/api/contact', {
-        name: formState.name,
-        email: formState.email,
-        message: formState.message,
-      });
-      sessionStorage.setItem(THROTTLE_KEY, String(now));
-      setIsSubmitted(true);
-      setFormState({ name: '', email: '', message: '', website: '' });
-      setTimeout(() => setIsSubmitted(false), 5000);
-    } catch {
-      setSubmitError('Something went wrong. Please try again or email me directly.');
-    } finally {
-      setIsSubmitting(false);
-    }
+    const subject = encodeURIComponent(`Portfolio enquiry from ${formState.name}`);
+    const body = encodeURIComponent(`Name: ${formState.name}\nEmail: ${formState.email}\n\n${formState.message}`);
+    sessionStorage.setItem(THROTTLE_KEY, String(now));
+    window.location.href = `mailto:rifkylovanto@gmail.com?subject=${subject}&body=${body}`;
+    setIsSubmitted(true);
+    setFormState({ name: '', email: '', message: '', website: '' });
+    setIsSubmitting(false);
+    setTimeout(() => setIsSubmitted(false), 5000);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

@@ -1,13 +1,12 @@
 # Rifky Lovanto - Portfolio
 
-Personal portfolio website for Rifky Lovanto, a Backend Engineer & Software Architect. Built with React, TypeScript, and Tailwind CSS, featuring a dark/light theme toggle, animated hero section, project showcase with search/filter, and a Supabase-backed contact form.
+Personal portfolio website for Rifky Lovanto, a Backend Engineer & Software Architect. Built with React, TypeScript, and Tailwind CSS. All portfolio content is stored in the frontend; no backend or API is required.
 
 ## Tech Stack
 
 - **Frontend**: React 18, TypeScript 5.5, Vite 5
 - **Styling**: Tailwind CSS 3.4
 - **Routing**: React Router DOM 7
-- **Backend**: Supabase (contact form)
 - **Icons**: Lucide React
 
 ## Getting Started
@@ -21,15 +20,6 @@ Personal portfolio website for Rifky Lovanto, a Backend Engineer & Software Arch
 
 ```bash
 pnpm install
-```
-
-### Environment Variables
-
-Create a `.env` file in the root directory:
-
-```
-VITE_SUPABASE_URL=your_supabase_url
-VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
 ```
 
 ### Development
@@ -68,9 +58,8 @@ pnpm run typecheck
 src/
   components/    UI components (Sidebar, Hero, About, Projects, Skills, Contact, etc.)
   hooks/         Custom hooks (theme, sidebar collapse, scroll reveal)
-  lib/           Supabase client
-public/          Static assets (resume PDF, profile photo, logo)
-supabase/        Database migrations
+  data/          Local portfolio content, including all 27 project records
+public/          Static assets, including local project media
 ```
 
 ## Features
@@ -80,5 +69,5 @@ supabase/        Database migrations
 - Animated typing effect on the hero section
 - 27 projects with search and tag filtering
 - Scroll-reveal animations via IntersectionObserver
-- Contact form with Supabase backend (RLS-protected)
+- Contact form opens the visitor's email client; no messages are sent through a backend
 - Mobile-friendly layout
