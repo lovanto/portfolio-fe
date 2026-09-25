@@ -93,14 +93,16 @@ export function useTimeline() {
 
 const fallbackSkills: SkillsData = {
   categories: [
-    { icon: 'Server', title: 'Backend & Architecture', skills: ['Node.js / NestJS', 'Golang', 'TypeScript', 'REST / gRPC / GraphQL', 'Python'] },
-    { icon: 'Cloud', title: 'Cloud & DevOps', skills: ['Docker', 'Microsoft Azure', 'GitHub Actions / GitLab CI', 'AWS', 'Linux / Nginx'] },
-    { icon: 'Database', title: 'Databases & Vector Search', skills: ['PostgreSQL / MySQL', 'Redis', 'MongoDB', 'Vector DB (HNSW / Pinecone)', 'SQL Server'] },
-    { icon: 'Brain', title: 'AI & Integrations', skills: ['OpenAI API', 'Claude / Gemini API', 'Local LLM / Hermes Agent', 'S3 / OneDrive / GDrive', 'Midtrans Payment Gateway'] },
+    { icon: 'Code2', title: 'Programming Languages', skills: ['Node.js', 'Golang', 'TypeScript / JavaScript', 'Dart', 'Python', 'PHP', 'Java'] },
+    { icon: 'Server', title: 'Backend & Architecture', skills: ['Microservices', 'NestJS', 'Express', 'Fastify', 'CodeIgniter', 'REST APIs', 'gRPC', 'Protobuf', 'GraphQL', 'WebSockets', 'Socket.IO', 'RBAC'] },
+    { icon: 'Cloud', title: 'Cloud & DevOps', skills: ['Microsoft Azure', 'AWS', 'GCP', 'Alibaba Cloud', 'Docker', 'Kubernetes', 'GitHub Actions', 'GitLab CI/CD', 'Nginx', 'Linux Administration', 'PM2', 'VPS'] },
+    { icon: 'Database', title: 'Databases & Vector Search', skills: ['PostgreSQL', 'MySQL', 'SQL Server', 'SQLite', 'Redis', 'MongoDB', 'Pinecone', 'Vector DB (HNSW)'] },
+    { icon: 'Brain', title: 'AI & Integrations', skills: ['OpenAI API', 'Claude API', 'Gemini API', 'Hermes Agent', 'Amazon S3', 'Google Drive API', 'OneDrive API', 'Midtrans Payment Gateway', 'Third-Party REST APIs', 'Power BI', 'Business Central', 'Dynamics 365', 'Buildxact'] },
+    { icon: 'Globe2', title: 'Authentication & Platform Services', skills: ['JWT', 'Basic Auth', 'Auth0', 'Firebase Notifications', 'QR Code Scanner', 'npoint.io', 'Mathdroid API'] },
   ],
-  frontendSkills: ['React / Next.js', 'Flutter / Dart', 'Tailwind CSS', 'HTML5 / CSS3'],
-  tools: ['Git', 'Docker', 'Portainer', 'Postman', 'Swagger / OpenAPI', 'Jira', 'Notion', 'Slack', 'GitHub Actions', 'PM2'],
-  softSkills: ['Agile/Scrum', 'System Design', 'Code Review', 'Microservices', 'CI/CD', 'English (Professional)', 'Indonesian (Native)'],
+  frontendSkills: ['React', 'Next.js', 'Flutter', 'Tailwind CSS', 'Material Tailwind', 'Bootstrap', 'Sass / SCSS', 'HTML5', 'CSS3', 'Axios', 'Chart.js'],
+  tools: ['System Design', 'Agile / Scrum', 'Git', 'Swagger / OpenAPI', 'Postman', 'Code Review', 'Trello', 'Jira', 'Slack', 'Notion', 'ClickUp', 'Portainer'],
+  softSkills: ['Technical Leadership', 'Problem Solving', 'Cross-functional Collaboration', 'English (Professional)', 'Indonesian (Native)'],
 };
 
 export function useSkills() {
