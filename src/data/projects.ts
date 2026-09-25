@@ -1,9 +1,6 @@
 import type { Collaborator, MediaItem, Project } from "../types";
 
-type Seed = Omit<
-  Project,
-  "id" | "shortDescription" | "media" | "tags" | "sortOrder" | "createdAt" | "updatedAt"
-> & {
+type Seed = Omit<Project, "id" | "shortDescription" | "media" | "tags" | "sortOrder" | "createdAt" | "updatedAt"> & {
   media?: string[];
 };
 const asset = (name: string) => `/projects/${name}`;
@@ -248,7 +245,19 @@ const source: Seed[] = [
     media: ["projected-ai.png", "projected-ai1.png", "projected-ai2.png", "projected-ai3.png", "projected-ai4.png"].map(
       asset,
     ),
-    techStack: ["Node.js", "PostgreSQL", "Next.js", "Express", "Redux", "Tailwind CSS", "Auth0", "Amazon S3", "OneDrive", "Google Drive", "Power BI"],
+    techStack: [
+      "Node.js",
+      "PostgreSQL",
+      "Next.js",
+      "Express",
+      "Redux",
+      "Tailwind CSS",
+      "Auth0",
+      "Amazon S3",
+      "OneDrive",
+      "Google Drive",
+      "Power BI",
+    ],
     label: "AI Platform",
     featured: false,
     isPrivate: true,
@@ -291,7 +300,18 @@ const source: Seed[] = [
     description: "Online boarding house search and reservation platform around Telkom University.",
     image: asset("telyukost.png"),
     media: ["telyukost1.png", "telyukost2.png"].map(asset),
-    techStack: ["Node.js", "MongoDB", "React.js", "Next.js", "Redux", "Axios", "GCP", "Alibaba Cloud", "JWT", "Basic Auth"],
+    techStack: [
+      "Node.js",
+      "MongoDB",
+      "React.js",
+      "Next.js",
+      "Redux",
+      "Axios",
+      "GCP",
+      "Alibaba Cloud",
+      "JWT",
+      "Basic Auth",
+    ],
     label: "Web App",
     featured: false,
     isPrivate: false,

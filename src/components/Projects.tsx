@@ -79,13 +79,13 @@ export default function Projects() {
         </Reveal>
 
         {/* Featured projects — large cards */}
-        <div className="space-y-8 mb-16">
+        <div className="space-y-5 mb-12">
           {featured.map((project, index) => (
             <Reveal key={project.slug} delay={index * 80}>
               <Link to={`/work/${project.slug}`} className="block">
-                <article className="group glass-card rounded-2xl overflow-hidden hover-lift">
-                  <div className="grid lg:grid-cols-5 gap-0">
-                    <div className="lg:col-span-2 relative h-56 lg:h-full overflow-hidden">
+                <article className="group glass-card rounded-2xl overflow-hidden hover-lift lg:h-48">
+                  <div className="grid lg:grid-cols-5 gap-0 h-full">
+                    <div className="lg:col-span-2 relative h-44 lg:h-full overflow-hidden">
                       <img
                         src={project.image}
                         alt={project.title}
@@ -98,14 +98,14 @@ export default function Projects() {
                         </span>
                       </div>
                     </div>
-                    <div className="lg:col-span-3 p-6 lg:p-8 flex flex-col justify-center">
-                      <h3 className="font-display text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    <div className="lg:col-span-3 p-5 lg:p-5 flex flex-col justify-center overflow-hidden">
+                      <h3 className="font-display text-lg md:text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                         {project.title}
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-5">
+                      <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-3 line-clamp-2">
                         {project.shortDescription}
                       </p>
-                      <div className="flex flex-wrap gap-2 mb-4">
+                      <div className="flex flex-wrap gap-2 mb-3">
                         {project.tags.map((tag) => (
                           <span
                             key={tag}
