@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Lock, ExternalLink, ChevronLeft, ChevronRight, Play } from 'lucide-react';
+import { ArrowLeft, Lock, ExternalLink, ChevronLeft, ChevronRight, Play, ZoomIn, X } from 'lucide-react';
 import Reveal from './Reveal';
 import { useState } from 'react';
 import { useProjectBySlug } from '../hooks/useApi';
@@ -8,6 +8,7 @@ export default function ProjectDetail() {
   const { slug } = useParams<{ slug: string }>();
   const { data: project, loading } = useProjectBySlug(slug || '');
   const [activeMedia, setActiveMedia] = useState(0);
+  const [isImageZoomed, setIsImageZoomed] = useState(false);
 
   if (loading) {
     return (
@@ -41,6 +42,7 @@ export default function ProjectDetail() {
 
   const prevMedia = () => setActiveMedia((prev) => (prev === 0 ? project.media.length - 1 : prev - 1));
   const nextMedia = () => setActiveMedia((prev) => (prev === project.media.length - 1 ? 0 : prev + 1));
+  const activeItem = project.media[activeMedia];
 
   return (
     <section className="section-padding">
@@ -75,6 +77,18 @@ export default function ProjectDetail() {
             )}
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
 
+            {activeItem?.type === 'image' && (
+              <button
+                type="button"
+                onClick={() => setIsImageZoomed(true)}
+                className="absolute top-4 right-4 z-10 inline-flex items-center gap-2 rounded-full bg-black/45 px-3 py-2 text-xs font-medium text-white backdrop-blur transition-colors hover:bg-black/65"
+                aria-label={`View ${project.title} image larger`}
+              >
+                <ZoomIn className="h-4 w-4" />
+                Enlarge
+              </button>
+            )}
+
             {hasMultipleMedia && (
               <>
                 <button
@@ -102,6 +116,31 @@ export default function ProjectDetail() {
             </div>
           </div>
         </Reveal>
+
+        {isImageZoomed && activeItem?.type === 'image' && (
+          <div
+            className="fixed inset-0 z-30 flex items-center justify-center overflow-hidden bg-black/90 p-4 pt-20 md:p-8 lg:left-72"
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${project.title} enlarged image`}
+            onClick={() => setIsImageZoomed(false)}
+          >
+            <button
+              type="button"
+              onClick={() => setIsImageZoomed(false)}
+              className="absolute right-5 top-5 z-10 rounded-full bg-white/15 p-2 text-white transition-colors hover:bg-white/25"
+              aria-label="Close enlarged image"
+            >
+              <X className="h-6 w-6" />
+            </button>
+            <img
+              src={activeItem.src}
+              alt={activeItem.alt || project.title}
+              className="max-h-[calc(100dvh-5rem)] max-w-[calc(100vw-2rem)] rounded-lg object-contain shadow-2xl md:max-h-[calc(100dvh-4rem)] md:max-w-[calc(100vw-4rem)] lg:max-w-[calc(100vw-22rem)]"
+              onClick={(event) => event.stopPropagation()}
+            />
+          </div>
+        )}
 
         {/* Thumbnail strip */}
         {hasMultipleMedia && (
