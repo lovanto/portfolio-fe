@@ -34,7 +34,8 @@ export default function Projects() {
         searchQuery === '' ||
         project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         project.shortDescription.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        project.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+        project.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        project.techStack.some((technology) => technology.toLowerCase().includes(searchQuery.toLowerCase()));
 
       const matchesTags =
         selectedTags.length === 0 ||

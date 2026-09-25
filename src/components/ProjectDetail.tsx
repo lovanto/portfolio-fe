@@ -146,12 +146,12 @@ export default function ProjectDetail() {
           <div className="space-y-6">
             <Reveal delay={150}>
               <div className="glass-card rounded-xl p-5">
-                <h3 className="text-xs font-mono uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">Tech Stack</h3>
+                <h3 className="text-xs font-mono uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">App Tags</h3>
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-xs px-2.5 py-1 bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-400 rounded-md font-medium"
+                      className="text-xs px-2.5 py-1 bg-violet-50 dark:bg-violet-950/40 text-violet-700 dark:text-violet-300 rounded-md font-medium"
                     >
                       {tag}
                     </span>
@@ -161,6 +161,22 @@ export default function ProjectDetail() {
             </Reveal>
 
             <Reveal delay={200}>
+              <div className="glass-card rounded-xl p-5">
+                <h3 className="text-xs font-mono uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">Tech Stack</h3>
+                <div className="flex flex-wrap gap-2">
+                  {project.techStack.map((technology) => (
+                    <span
+                      key={technology}
+                      className="text-xs px-2.5 py-1 bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-400 rounded-md font-medium"
+                    >
+                      {technology}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={250}>
               <div className="glass-card rounded-xl p-5">
                 <h3 className="text-xs font-mono uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">Status</h3>
                 {project.isPrivate ? (
@@ -178,7 +194,7 @@ export default function ProjectDetail() {
             </Reveal>
 
             {!project.isPrivate && project.href && (
-              <Reveal delay={250}>
+              <Reveal delay={300}>
                 <a
                   href={project.href}
                   target="_blank"

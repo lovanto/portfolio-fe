@@ -25,6 +25,7 @@ export interface Project {
   image: string;
   media: MediaItem[];
   tags: string[];
+  techStack: string[];
   label: string;
   featured: boolean;
   isPrivate: boolean;
