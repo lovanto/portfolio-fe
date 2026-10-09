@@ -14,8 +14,6 @@ const longDescriptions: Record<string, string> = {
     "LowkeyThings is an event marketplace built to make finding the right event feel less fragmented. Instead of moving between scattered event pages, users can discover options, compare what each experience offers, and explore the details that matter before committing. The product is shaped around a simple journey: browse with curiosity, evaluate with confidence, and choose an event that suits a person's interests, timing, and expectations.",
   atlas:
     "Atlas is an AI-first platform for industrial operators who need clearer visibility into complex, asset-heavy operations. It is designed to turn operational and equipment data into useful signals, supporting predictive maintenance and helping teams identify risks before they become disruptive incidents. The product focuses on practical decision support: giving operators a better basis for prioritizing work, improving reliability, and keeping operations moving efficiently.",
-  aimos:
-    "AI Marketing Operating System is an enterprise-focused platform for marketing teams that want to use AI in a coordinated, scalable way. It provides a shared operating layer for marketing work, helping large organizations bring AI-assisted processes into a more consistent workflow instead of relying on disconnected tools and ad-hoc experimentation. The platform is intended to make AI a practical part of day-to-day marketing operations while preserving the structure large teams need.",
   papanclip:
     "PapanClip is a visual project-management tool built around the Kanban methodology. Work is organized into an easy-to-read flow, allowing teams to see what is planned, what is actively being worked on, and what has been completed. By making progress and bottlenecks visible, the product gives teams a lightweight way to coordinate tasks, keep priorities clear, and maintain momentum across a shared workflow.",
   hompimpa:
@@ -59,7 +57,6 @@ const longDescriptions: Record<string, string> = {
 const projectTags: Record<string, string[]> = {
   lowkeythings: ["Events", "Marketplace"],
   atlas: ["Industrial AI", "Predictive Maintenance"],
-  aimos: ["Marketing", "Enterprise AI"],
   papanclip: ["Productivity", "Kanban"],
   hompimpa: ["Company Profile", "Creative Studio"],
   empatrima: ["Education", "Training"],
@@ -120,17 +117,6 @@ const source: Seed[] = [
     techStack: ["Not publicly documented"],
     label: "AI Platform",
     featured: true,
-    isPrivate: true,
-    collaborators: [rifky],
-  },
-  {
-    slug: "aimos",
-    title: "AI Marketing Operating System(AIMOS)",
-    description: "AI-powered marketing operating system built specifically for large enterprises.",
-    image: asset("soon.png"),
-    techStack: ["Not publicly documented"],
-    label: "AI Platform",
-    featured: false,
     isPrivate: true,
     collaborators: [rifky],
   },
