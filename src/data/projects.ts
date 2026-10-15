@@ -11,7 +11,7 @@ const rifky: Collaborator = {
 };
 const longDescriptions: Record<string, string> = {
   lowkeythings:
-    "LowkeyThings is an event marketplace built to make finding the right event feel less fragmented. Instead of moving between scattered event pages, users can discover options, compare what each experience offers, and explore the details that matter before committing. The product is shaped around a simple journey: browse with curiosity, evaluate with confidence, and choose an event that suits a person's interests, timing, and expectations.",
+    'LowkeyThings is an Indonesian event platform built around the idea of "Small Things, Big Moments" handling the details behind the scenes so organizers can focus on the experience and participants can enjoy the moment. Visitors can browse and filter events by keyword, date, or city, register without creating an account, pay through Midtrans, and receive a QR-coded e-ticket and confirmation by email. Organizers get a dashboard to manage categories, tickets, and participants, run multi-stage racepack collection and race-day check-in, generate BIB numbers by category or gender, and handle wallets, withdrawals, refunds, and donation reporting. Under the hood, a Go API enforces integer-rupiah money handling, layered anti-oversell quota checks, idempotent signature-verified payment webhooks, and encrypted participant data, with an OpenAPI contract keeping the Next.js frontend in sync.',
   atlas:
     "Atlas is an AI-first platform for industrial operators who need clearer visibility into complex, asset-heavy operations. It is designed to turn operational and equipment data into useful signals, supporting predictive maintenance and helping teams identify risks before they become disruptive incidents. The product focuses on practical decision support: giving operators a better basis for prioritizing work, improving reliability, and keeping operations moving efficiently.",
   papanclip:
@@ -55,7 +55,7 @@ const longDescriptions: Record<string, string> = {
     "Waranti is a spare-part and warranty-management system created to make operational tracking more reliable. It centralises inventory and warranty records so staff can follow the condition, movement, and status of parts through a more structured process. The application is intended to reduce uncertainty around operational assets and provide a clearer record for the teams responsible for managing them.",
 };
 const projectTags: Record<string, string[]> = {
-  lowkeythings: ["Events", "Marketplace"],
+  lowkeythings: ["Events", "Marketplace", "Ticketing"],
   atlas: ["Industrial AI", "Predictive Maintenance"],
   papanclip: ["Productivity", "Kanban"],
   hompimpa: ["Company Profile", "Creative Studio"],
@@ -100,12 +100,35 @@ const source: Seed[] = [
   {
     slug: "lowkeythings",
     title: "LowkeyThings",
-    description: "Event Marketplace helps users discover, compare, and explore events in one place.",
-    image: asset("soon.png"),
-    techStack: ["Not publicly documented"],
+    description:
+      "Indonesian event platform for discovering events, registering without an account, paying online, and managing participants end to end.",
+    image: asset("lowkeythings.png"),
+    media: [
+      "lowkeythings1.png",
+      "lowkeythings2.png",
+      "lowkeythings3.png",
+      "lowkeythings4.png",
+      "lowkeythings5.png",
+      "lowkeythings6.png",
+      "lowkeythings7.png",
+    ].map(asset),
+    techStack: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Go",
+      "PostgreSQL",
+      "sqlc",
+      "Midtrans",
+      "OpenAPI",
+      "MinIO",
+      "Docker",
+      "Playwright",
+    ],
     label: "Web App",
     featured: true,
     isPrivate: false,
+    href: "https://www.lowkeythings.my.id/",
     collaborators: [rifky],
   },
   {
