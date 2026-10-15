@@ -140,7 +140,14 @@ const source: Seed[] = [
     description:
       "Official website for a 5K and 10K charity run supporting women's health in Indonesia, with course maps, race info, and a live participant directory.",
     image: asset("sprinrun.png"),
-    media: ["sprinrun1.png", "sprinrun2.png", "sprinrun3.png", "sprinrun4.png", "sprinrun5.png"].map(asset),
+    media: [
+      "sprinrun1.png",
+      "sprinrun2.png",
+      "sprinrun3.png",
+      "sprinrun4.png",
+      "sprinrun5.png",
+      "sprinrun6.png",
+    ].map(asset),
     techStack: [
       "Next.js",
       "TypeScript",
