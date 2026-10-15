@@ -15,7 +15,7 @@ const longDescriptions: Record<string, string> = {
   sprinrun:
     "SPRIN RUN 2027 is the official website for a 5K and 10K charity run in Semarang, organised by POGI Semarang (the Indonesian Obstetrics and Gynaecology Association) under the theme \"Every Step Saves a Life\". The site introduces the SPRIN (Selamatkan Perempuan Indonesia) programme and how registration proceeds support HPV vaccination, reproductive-health screening, and efforts to reduce maternal mortality. Visitors can count down to race day, compare the Fun Run, Open, Master, and Master+ classes, explore each course on an interactive Leaflet map, review race-kit benefits and FAQs, and find donation details for the charity programme. Registration is handled through LowkeyThings, and a public participant directory pulls paid registrations from the LowkeyThings API with search and category or age-class filters. It is built as a statically exported Next.js site with an image pipeline that generates AVIF, WebP, and JPEG variants, plus bundle-size and Lighthouse budgets enforced in CI.",
   atlas:
-    "Atlas is an AI-first platform for industrial operators who need clearer visibility into complex, asset-heavy operations. It is designed to turn operational and equipment data into useful signals, supporting predictive maintenance and helping teams identify risks before they become disruptive incidents. The product focuses on practical decision support: giving operators a better basis for prioritizing work, improving reliability, and keeping operations moving efficiently.",
+    "ATLAS by Altimeda is an AI operating engine for industrial and construction operators who run on dozens of disconnected systems. Instead of replacing ERP, MES, SCADA, or IoT tools, it works on top of them through one continuous loop: FABRIX connects and validates operational data, ONTRIX models how the business works by linking machines, orders, people, and events, NEXA surfaces prioritised recommendations backed by evidence, and approved actions trigger workflows whose outcomes flow back to improve the next decision. On top of that engine sit applications such as asset health and maintenance prioritisation, manufacturing line balancing, and construction labour and site-diary management, with a portal for module subscriptions and per-tenant role access. The backend is a set of Go microservices behind a single API gateway that verifies Keycloak JWTs and fans REST requests out over gRPC, with each service owning its own PostgreSQL database, secrets held in Infisical, Socket.IO for realtime canvas collaboration, a Python/FastAPI pipeline for executing FABRIX workflows, and an MCP server that lets a chatbot draft workflow canvases with read-only access.",
   papanclip:
     "PapanClip is a visual project-management tool built around the Kanban methodology. Work is organized into an easy-to-read flow, allowing teams to see what is planned, what is actively being worked on, and what has been completed. By making progress and bottlenecks visible, the product gives teams a lightweight way to coordinate tasks, keep priorities clear, and maintain momentum across a shared workflow.",
   hompimpa:
@@ -59,7 +59,7 @@ const longDescriptions: Record<string, string> = {
 const projectTags: Record<string, string[]> = {
   lowkeythings: ["Events", "Marketplace", "Ticketing"],
   sprinrun: ["Sports", "Charity", "Event Website"],
-  atlas: ["Industrial AI", "Predictive Maintenance"],
+  atlas: ["Industrial AI", "Predictive Maintenance", "Workflow Automation"],
   papanclip: ["Productivity", "Kanban"],
   hompimpa: ["Company Profile", "Creative Studio"],
   empatrima: ["Education", "Training"],
@@ -169,12 +169,26 @@ const source: Seed[] = [
     slug: "atlas",
     title: "Atlas",
     description:
-      "AI-first enterprise platforms for industrial operators, enabling predictive maintenance and operational efficiency.",
-    image: asset("soon.png"),
-    techStack: ["Not publicly documented"],
+      "AI operating engine that connects industrial data, models how operations work, and turns it into explainable decisions and workflows.",
+    image: asset("atlas.png"),
+    media: ["atlas1.png", "atlas2.png", "atlas3.png", "atlas4.png"].map(asset),
+    techStack: [
+      "Go",
+      "gRPC",
+      "PostgreSQL",
+      "Keycloak",
+      "Infisical",
+      "Socket.IO",
+      "Python",
+      "FastAPI",
+      "MCP",
+      "Microservices",
+      "Docker",
+    ],
     label: "AI Platform",
     featured: true,
-    isPrivate: true,
+    isPrivate: false,
+    href: "https://atlas.altimeda.com",
     collaborators: [rifky],
   },
   {
