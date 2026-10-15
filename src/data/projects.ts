@@ -18,8 +18,6 @@ const longDescriptions: Record<string, string> = {
     "ATLAS by Altimeda is an AI operating engine for industrial and construction operators who run on dozens of disconnected systems. Instead of replacing ERP, MES, SCADA, or IoT tools, it works on top of them through one continuous loop: FABRIX connects and validates operational data, ONTRIX models how the business works by linking machines, orders, people, and events, NEXA surfaces prioritised recommendations backed by evidence, and approved actions trigger workflows whose outcomes flow back to improve the next decision. On top of that engine sit applications such as asset health and maintenance prioritisation, manufacturing line balancing, and construction labour and site-diary management, with a portal for module subscriptions and per-tenant role access. The backend is a set of Go microservices behind a single API gateway that verifies Keycloak JWTs and fans REST requests out over gRPC, with each service owning its own PostgreSQL database, secrets held in Infisical, Socket.IO for realtime canvas collaboration, a Python/FastAPI pipeline for executing FABRIX workflows, and an MCP server that lets a chatbot draft workflow canvases with read-only access.",
   papanclip:
     "PapanClip is a visual project-management tool built around the Kanban methodology. Work is organized into an easy-to-read flow, allowing teams to see what is planned, what is actively being worked on, and what has been completed. By making progress and bottlenecks visible, the product gives teams a lightweight way to coordinate tasks, keep priorities clear, and maintain momentum across a shared workflow.",
-  hompimpa:
-    "Hompimpa is a modern company-profile website created to communicate the studio's services, portfolio, and personality with clarity. It gives prospective clients a guided introduction to the business, showing both the kind of work the studio delivers and the brand behind it. The experience is designed to feel polished and approachable while making it easy for visitors to understand the studio's capabilities.",
   empatrima:
     "Empatrima is a real-time quiz application for education and corporate training. It supports interactive sessions where facilitators can pose questions, participants can respond in the moment, and the group can use live results to guide the discussion. The product is aimed at making learning and training more active, giving audiences a reason to participate instead of only consuming information passively.",
   moeda:
@@ -32,8 +30,6 @@ const longDescriptions: Record<string, string> = {
     "WABi is an enterprise integration system that connects Business Central with Dynamics 365 and Buildxact. It enables information to flow more smoothly between platforms that support different parts of an organisation's operations, reducing the need for duplicate entry and manual reconciliation. The integration is designed to improve collaboration across systems, streamline operational handoffs, and give teams more dependable data as they work.",
   "projected-ai":
     "Projected is an AI-powered enterprise platform for intelligent document processing and collaboration. It helps organisations work with large volumes of information by bringing AI assistance into the way documents are organized, understood, and shared. The product is focused on making document-heavy workflows easier to navigate, so teams can spend less time searching through files and more time acting on the information they contain.",
-  "projected-consulting":
-    "Projected Consulting is a modern company-profile website for a consultancy working across defence, mining, and infrastructure. The site gives the firm a professional digital presence that communicates its positioning, sector focus, and services in a direct and credible way. Its content and presentation are designed to help prospective clients quickly understand the consultancy's expertise and the context in which it operates.",
   portfolio:
     "This portfolio brings together my background, experience, contact information, and the projects I have worked on. It was built with React and Tailwind CSS, with local light and dark theme preferences to make the experience comfortable across different viewing conditions. The earlier version also consumed project content from npoint.io, reflecting an approach that separated content from presentation while keeping the site focused on the work itself.",
   telyukost:
@@ -61,14 +57,12 @@ const projectTags: Record<string, string[]> = {
   sprinrun: ["Sports", "Charity", "Event Website"],
   atlas: ["Industrial AI", "Predictive Maintenance", "Workflow Automation"],
   papanclip: ["Productivity", "Kanban"],
-  hompimpa: ["Company Profile", "Creative Studio"],
   empatrima: ["Education", "Training"],
   moeda: ["Retail", "Point of Sale"],
   "wcc-system": ["Enterprise", "Analytics"],
   "adenco-enterprise-system": ["Enterprise", "Automation"],
   "wabi-integration": ["Integration", "Business Operations"],
   "projected-ai": ["Generative AI", "Documents"],
-  "projected-consulting": ["Consulting", "Company Profile"],
   portfolio: ["Portfolio", "Personal Brand"],
   telyukost: ["Property", "Reservations"],
   iflabbap: ["Education", "Administration"],
@@ -200,19 +194,8 @@ const source: Seed[] = [
     techStack: ["Next.js", "TypeScript", "PostgreSQL", "NestJS", "Kanban", "Agile", "RBAC", "Sprint Planning"],
     label: "Web App",
     featured: false,
-    isPrivate: true,
-    collaborators: [rifky],
-  },
-  {
-    slug: "hompimpa",
-    title: "Hompimpa",
-    description: "Modern company profile website for Hompimpa, showcasing services, portfolio, and brand identity.",
-    image: asset("hompimpa.png"),
-    media: ["hompimpa.png", "hompimpa1.png", "hompimpa2.png", "hompimpa3.png"].map(asset),
-    techStack: ["Next.js", "React.js", "Tailwind CSS", "TypeScript", "REST API", "Responsive Design", "SEO"],
-    label: "Web",
-    featured: false,
-    isPrivate: true,
+    isPrivate: false,
+    href: "https://papanclip.hompimpa.biz.id/",
     collaborators: [rifky],
   },
   {
@@ -231,7 +214,8 @@ const source: Seed[] = [
     techStack: ["NestJS", "Next.js", "PostgreSQL", "REST API", "WebSocket", "Socket.IO", "PM2", "VPS"],
     label: "Web App",
     featured: false,
-    isPrivate: true,
+    isPrivate: false,
+    href: "https://www.empatrima.my.id/",
     collaborators: [rifky],
   },
   {
@@ -317,25 +301,8 @@ const source: Seed[] = [
     ],
     label: "AI Platform",
     featured: false,
-    isPrivate: true,
-    collaborators: [rifky],
-  },
-  {
-    slug: "projected-consulting",
-    title: "Projected Consulting",
-    description: "Modern company profile website for consulting services in defence, mining, and infrastructure.",
-    image: asset("projected-consulting.png"),
-    media: [
-      "projected-consulting.png",
-      "projected-consulting1.png",
-      "projected-consulting2.png",
-      "projected-consulting3.png",
-      "projected-consulting4.png",
-    ].map(asset),
-    techStack: ["React.js", "SCSS", "Bootstrap"],
-    label: "Web",
-    featured: false,
-    isPrivate: true,
+    isPrivate: false,
+    href: "https://solution.projectedai.com.au/",
     collaborators: [rifky],
   },
   {
