@@ -12,6 +12,8 @@ const rifky: Collaborator = {
 const longDescriptions: Record<string, string> = {
   lowkeythings:
     'LowkeyThings is an Indonesian event platform built around the idea of "Small Things, Big Moments" handling the details behind the scenes so organizers can focus on the experience and participants can enjoy the moment. Visitors can browse and filter events by keyword, date, or city, register without creating an account, pay through Midtrans, and receive a QR-coded e-ticket and confirmation by email. Organizers get a dashboard to manage categories, tickets, and participants, run multi-stage racepack collection and race-day check-in, generate BIB numbers by category or gender, and handle wallets, withdrawals, refunds, and donation reporting. Under the hood, a Go API enforces integer-rupiah money handling, layered anti-oversell quota checks, idempotent signature-verified payment webhooks, and encrypted participant data, with an OpenAPI contract keeping the Next.js frontend in sync.',
+  sprinrun:
+    "SPRIN RUN 2027 is the official website for a 5K and 10K charity run in Semarang, organised by POGI Semarang (the Indonesian Obstetrics and Gynaecology Association) under the theme \"Every Step Saves a Life\". The site introduces the SPRIN (Selamatkan Perempuan Indonesia) programme and how registration proceeds support HPV vaccination, reproductive-health screening, and efforts to reduce maternal mortality. Visitors can count down to race day, compare the Fun Run, Open, Master, and Master+ classes, explore each course on an interactive Leaflet map, review race-kit benefits and FAQs, and find donation details for the charity programme. Registration is handled through LowkeyThings, and a public participant directory pulls paid registrations from the LowkeyThings API with search and category or age-class filters. It is built as a statically exported Next.js site with an image pipeline that generates AVIF, WebP, and JPEG variants, plus bundle-size and Lighthouse budgets enforced in CI.",
   atlas:
     "Atlas is an AI-first platform for industrial operators who need clearer visibility into complex, asset-heavy operations. It is designed to turn operational and equipment data into useful signals, supporting predictive maintenance and helping teams identify risks before they become disruptive incidents. The product focuses on practical decision support: giving operators a better basis for prioritizing work, improving reliability, and keeping operations moving efficiently.",
   papanclip:
@@ -56,6 +58,7 @@ const longDescriptions: Record<string, string> = {
 };
 const projectTags: Record<string, string[]> = {
   lowkeythings: ["Events", "Marketplace", "Ticketing"],
+  sprinrun: ["Sports", "Charity", "Event Website"],
   atlas: ["Industrial AI", "Predictive Maintenance"],
   papanclip: ["Productivity", "Kanban"],
   hompimpa: ["Company Profile", "Creative Studio"],
@@ -129,6 +132,30 @@ const source: Seed[] = [
     featured: true,
     isPrivate: false,
     href: "https://www.lowkeythings.my.id/",
+    collaborators: [rifky],
+  },
+  {
+    slug: "sprinrun",
+    title: "SPRIN RUN 2027",
+    description:
+      "Official website for a 5K and 10K charity run supporting women's health in Indonesia, with course maps, race info, and a live participant directory.",
+    image: asset("sprinrun.png"),
+    media: ["sprinrun1.png", "sprinrun2.png", "sprinrun3.png", "sprinrun4.png", "sprinrun5.png"].map(asset),
+    techStack: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Leaflet",
+      "REST API",
+      "Static Export",
+      "Docker",
+      "GitHub Actions",
+      "Lighthouse CI",
+    ],
+    label: "Web",
+    featured: false,
+    isPrivate: false,
+    href: "https://www.sprinrun.com/",
     collaborators: [rifky],
   },
   {
